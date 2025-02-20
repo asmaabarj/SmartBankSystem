@@ -4,6 +4,7 @@ import com.customerservice.dtos.CustomerDTO;
 import com.customerservice.services.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class CustomerController {
     }
 
     @PostMapping
-    public CustomerDTO saveCustomer(@RequestBody CustomerDTO customerDTO) {
+    public CustomerDTO saveCustomer(@Valid @RequestBody CustomerDTO customerDTO) {
         return customerService.saveCustomer(customerDTO);
     }
 

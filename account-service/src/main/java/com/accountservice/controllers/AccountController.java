@@ -1,9 +1,10 @@
-package com.accountservice.web;
+package com.accountservice.controllers;
 
 import com.accountservice.dtos.AccountDTO;
 import com.accountservice.services.AccountService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public AccountDTO saveAccount(@RequestBody AccountDTO accountDTO) {
+    public AccountDTO saveAccount(@Valid @RequestBody AccountDTO accountDTO) {
         return accountService.saveAccount(accountDTO);
     }
 
