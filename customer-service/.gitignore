@@ -31,3 +31,14 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# IDE files
+.idea/
+*.iml
+
+# Specific files
+account-service.iml
+config-service.iml
+customer-service.iml
+discovery-service.iml
+gateway-service.iml
