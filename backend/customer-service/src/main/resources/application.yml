@@ -6,6 +6,11 @@ spring:
   cloud:
     config:
       enabled: true
-      fail-fast: true
-  profiles:
-    active: default 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/customer_db
+    username: postgres
+    password: asmaa123
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
