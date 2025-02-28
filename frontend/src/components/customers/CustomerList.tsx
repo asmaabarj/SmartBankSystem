@@ -27,12 +27,18 @@ export const CustomerList = () => {
     const loadCustomers = async () => {
         try {
             setLoading(true);
+            setError('');
+            console.log('Chargement des clients...');
             const data = await customerService.getAll();
-            console.log('Customers loaded:', data); // Pour le débogage
+            console.log('Données reçues:', data);
             setCustomers(data);
-        } catch (error) {
-            console.error('Error:', error);
-            setError('Erreur lors du chargement des clients');
+        } catch (error: any) {
+            console.error('Erreur complète:', error);
+            setError(
+                error.response?.data?.message || 
+                error.message || 
+                'Erreur lors du chargement des clients'
+            );
         } finally {
             setLoading(false);
         }

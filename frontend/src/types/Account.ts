@@ -1,11 +1,11 @@
 export enum AccountType {
-    CURRENT = "CURRENT",
-    SAVINGS = "SAVINGS"
+    CURRENT = 'CURRENT',
+    SAVINGS = 'SAVINGS'
 }
 
 export interface Account {
     id?: number;
-    balance: number;
     type: AccountType;
+    balance: number;
     customerId: number;
 }
