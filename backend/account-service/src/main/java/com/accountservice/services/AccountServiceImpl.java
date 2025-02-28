@@ -1,24 +1,27 @@
 package com.accountservice.services;
 
-import com.accountservice.dtos.AccountDTO;
-import com.accountservice.entities.Account;
-import com.accountservice.repositories.AccountRepository;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
-import com.accountservice.exceptions.CustomerNotFoundException;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.accountservice.dtos.AccountDTO;
+import com.accountservice.entities.Account;
+import com.accountservice.exceptions.CustomerNotFoundException;
+import com.accountservice.repositories.AccountRepository;
 
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
     private final RestTemplate restTemplate;
-    private final String customerServiceUrl = "http://localhost:8081/api/customers/";
+    private final String customerServiceUrl = "http://CUSTOMER-SERVICE/api/customers/";
 
-    public AccountServiceImpl(AccountRepository accountRepository, RestTemplate restTemplate) {
+    public AccountServiceImpl(AccountRepository accountRepository, 
+                            @LoadBalanced RestTemplate restTemplate) {
         this.accountRepository = accountRepository;
         this.restTemplate = restTemplate;
     }
