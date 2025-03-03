@@ -83,7 +83,7 @@ export const CustomerList = () => {
                                 <TableCell>
                                     <Button 
                                         component={Link} 
-                                        to={`/customers/${customer.id}`}
+                                        to={`/accounts/customer/${customer.id}`}
                                         color="primary"
                                     >
                                         Détails

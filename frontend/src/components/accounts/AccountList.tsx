@@ -56,8 +56,7 @@ export const AccountList = () => {
                             <TableCell>ID</TableCell>
                             <TableCell>Type</TableCell>
                             <TableCell>Solde</TableCell>
-                            <TableCell>Client ID</TableCell>
-                            <TableCell>Actions</TableCell>
+                            <TableCell>Custumer id</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -68,16 +67,7 @@ export const AccountList = () => {
                                     {account.type === AccountType.CURRENT ? 'Courant' : 'Épargne'}
                                 </TableCell>
                                 <TableCell>{account.balance} €</TableCell>
-                                <TableCell>{account.customerId}</TableCell>
-                                <TableCell>
-                                    <Button
-                                        component={Link}
-                                        to={`/accounts/${account.id}`}
-                                        color="primary"
-                                    >
-                                        Détails
-                                    </Button>
-                                </TableCell>
+                                <TableCell>{account.customerId}</TableCell>   
                             </TableRow>
                         ))}
                     </TableBody>

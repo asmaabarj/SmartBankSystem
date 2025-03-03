@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Account } from '../types/Account';
 
-const API_URL = 'http://localhost:8080/api/accounts';
+const API_URL = 'http://localhost:8082/api/accounts';
 
 export const accountService = {
     getAll: async (): Promise<Account[]> => {

@@ -16,6 +16,8 @@ import { accountService } from '../../services/accountService';
 
 export const CustomerDetails = () => {
     const { id } = useParams<{ id: string }>();
+    console.log(id);
+    
     const navigate = useNavigate();
     const [customer, setCustomer] = useState<Customer | null>(null);
     const [accounts, setAccounts] = useState<Account[]>([]);
@@ -58,24 +60,7 @@ export const CustomerDetails = () => {
 
     return (
         <Box>
-            <Card sx={{ mb: 3 }}>
-                <CardContent>
-                    <Typography variant="h5" gutterBottom>
-                        Détails du Client
-                    </Typography>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} md={6}>
-                            <Typography variant="subtitle1">
-                                <strong>Nom:</strong> {customer.name}
-                            </Typography>
-                            <Typography variant="subtitle1">
-                                <strong>Email:</strong> {customer.email}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </CardContent>
-            </Card>
-
+           
             <Typography variant="h6" gutterBottom>
                 Comptes associés
             </Typography>

@@ -20,8 +20,8 @@ public class AccountServiceImpl implements AccountService {
     private final RestTemplate restTemplate;
     private final String customerServiceUrl = "http://CUSTOMER-SERVICE/api/customers/";
 
-    public AccountServiceImpl(AccountRepository accountRepository, 
-                            @LoadBalanced RestTemplate restTemplate) {
+    public AccountServiceImpl(AccountRepository accountRepository,
+                              @LoadBalanced RestTemplate restTemplate) {
         this.accountRepository = accountRepository;
         this.restTemplate = restTemplate;
     }
@@ -46,32 +46,32 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public AccountDTO getAccount(Long id) {
         Account account = accountRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Account not found"));
+                .orElseThrow(() -> new RuntimeException("Account not found"));
         return mapToDTO(account);
     }
 
     @Override
     public List<AccountDTO> getAccountsByCustomer(Long customerId) {
         return accountRepository.findByCustomerId(customerId)
-            .stream()
-            .map(this::mapToDTO)
-            .collect(Collectors.toList());
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<AccountDTO> listAccounts() {
         return accountRepository.findAll()
-            .stream()
-            .map(this::mapToDTO)
-            .collect(Collectors.toList());
+                .stream()
+                .map(this::mapToDTO)
+                .collect(Collectors.toList());
     }
 
     private AccountDTO mapToDTO(Account account) {
         return new AccountDTO(
-            account.getId(),
-            account.getBalance(),
-            account.getType(),
-            account.getCustomerId()
+                account.getId(),
+                account.getBalance(),
+                account.getType(),
+                account.getCustomerId()
         );
     }
 } 
